@@ -1,135 +1,67 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <link
-      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div class='bg-image'></div>
-    <div id="audio-tab" controls>
-      <audio src="mp3/title1.mp3"></audio>
-    </div>
-    <div id="main-body">
-      <div id="block-0">
-        <img src="img/station.gif" id="header-img" />
-        <div class="header">
-          <h3>Station 13</h3>
-          <p><i>A short atmospheric adventure game</i></p>
-          <div class="start-container">
-            <button
-              id="startButton"
-              class="nes-btn"
-              onclick="revealEmploymentForm(this)"
-            >
-              Begin
-            </button>
-          </div>
-        </div>
-      </div>
-      <div id="block-1" class="block">
-        <div name="employmentForm" id="employment-form">
-          <h3>NanoTrasen Employment Application</h3>
-          <br />
-          <div class="sm-split-container">
-            <div class="sm-split">
-              <div class="nes-field">
-                <label for="fname_field">First name</label>
-                <input
-                  type="text"
-                  id="fname_field"
-                  class="nes-input"
-                  placeholder="Wesley"
-                />
-              </div>
-            </div>
-            <div class="sm-split">
-              <div class="nes-field">
-                <label for="lname_field">Last name</label>
-                <input
-                  type="text"
-                  id="lname_field"
-                  class="nes-input"
-                  placeholder="Smasher"
-                />
-              </div>
-            </div>
-          </div>
-          <div>
-            <label>What is your gender?</label>
-            <br />
-            <label>
-              <input type="radio" class="nes-radio" name="answer" checked />
-              <span>Yes</span>
-            </label>
-            <label>
-              <input type="radio" class="nes-radio" name="answer" />
-              <span>Female</span>
-            </label>
-            <label>
-              <input type="radio" class="nes-radio" name="answer" />
-              <span>the dog from silent hill 2</span>
-            </label>
-          </div>
-          <div>
-            <label for="default_select">Desired Department</label>
-            <div class="nes-select">
-              <select required id="default_select">
-                <option value="0" selected>Logistics</option>
-                <option value="1">Medical</option>
-              </select>
-            </div>
-          </div>
-          <div class="loren">
-            <mark>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</mark
-            ><br />
-            <mark
-              >Nunc consectetur tellus ante, malesuada elementum nisi malesuada
-              vel. Mauris at orci justo.</mark
-            ><br />
-            <mark
-              >Etiam vel iaculis dui, a elementum massa. Mauris magna nibh,
-              posuere in ultricies sed, maximus non enim. In erat sapien,
-              finibus feugiat nisi non, tristique feugiat turpis. Fusce sed mi
-              ut eros aliquet posuere.</mark
-            ><br />
-            <mark>Fusce pellentesque scelerisque aliquam.</mark><br />
-          </div>
-          <div id="form-sign-container">
-            <div>
-              <button class="nes-btn" onclick="signEmploymentForm(this)">
-                Sign & Submit
-              </button>
-            </div>
-            <div>
-              <input type="text" id="signField" class="nes-input" readonly />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="block-2">
-        <div id="letter" onclick="openLetter(this)">
-          <div class="front">
-            <img src="img/classified.png" />
-            <div>
-              <span>NanoTrasen Corporation</span>
-            </div>
-          </div>
-        </div>
-        <div id="letter-tab"></div>
-        <!-- <div class="nes-container is-rounded is-sys with-title">
-            <p class='title'>Computer</p>
-            <p>INVALID</p>
-          </div> -->
-      </div>
-    </div>
 
-    <script src="script.js"></script>
-  </body>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata|Montserrat:300&display=swap" rel="stylesheet" />
+
+	<link href="css/home.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div class="grid-container">
+		<div id="profile-picture" class="grid-sq-md grid-overlay">
+			<img src="img/snowboard-square.png" />
+			<span class="overlay-body">/img/me.png</span>
+		</div>
+		<a id="spotify-link" class="grid-link grid-sq-sm"
+			href="https://open.spotify.com/user/22hoczt2ioutmrkytsewdqgky?si=WO7CyoppTNWxzYIuMm6zYA">
+			<img src="img/spotify-logo.svg" />
+		</a>
+		<a id="steam-link" class="grid-link grid-sq-sm" href="">
+			<img src="img/steam-logo.svg" />
+		</a>
+		<a id="github-link" class="grid-link grid-sq-sm" href="">
+			<img src="img/github-logo.svg" />
+		</a>
+	</div>
+	<hr />
+	<p class="section-header">What I'm Listening To</p>
+	<div id="album-container" class="grid-container pretty-scroll">
+		<div class="grid-sq-lg">
+			<img src="img/album-covers/rose-tfb.jpg" />
+		</div>
+		<div class="grid-sq-md">
+			<img src="img/album-covers/versace-summer-jank.jpg" />
+		</div>
+		<div class="grid-sq-sm">
+			<img src="img/album-covers/joy-departed-sorority-noise.jpg" />
+		</div>
+		<div class="grid-sq-sm">
+			<img src="img/album-covers/map-it-out-macseal.jpg" />
+		</div>
+		<div class="grid-sq-sm">
+			<img src="img/album-covers/cardinal-pinegrove.jpg" />
+		</div>
+		<div class="grid-sq-md">
+			<img src="img/album-covers/death-race-for-love-juice-wrld.jpg" />
+		</div>
+		<div class="grid-sq-sm">
+			<img src="img/album-covers/rogue-taxidermy-days-n-daze.jpg" />
+		</div>
+		<div class="grid-sq-md">
+			<img src="img/album-covers/people-who-can-eat-people-ajj.jpg" />
+		</div>
+		<div class="grid-sq-sm">
+				<img src="img/album-covers/this-couch-tiny-moving-parts.jpg" />
+			</div>
+			<div class="grid-sq-sm">
+					<img src="img/album-covers/yankee-hotel-foxtrot-wilco.jpg" />
+				</div>
+			<div class="grid-sq-lg">
+					<img src="img/album-covers/beachboy-mccafferty.jpg" />
+				</div>
+	</div>
+</body>
+
 </html>
