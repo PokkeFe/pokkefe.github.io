@@ -1,0 +1,31 @@
+let savedalbums = "Ann~https://i.scdn.co/image/ab67616d0000b273820b66d7555098ca4e58e697~spotify:album:0mbnkoC2EGp2cqfKVU5ptI|The Way Things Change~https://i.scdn.co/image/ab67616d0000b2738ee5fbc2cc0ea150bf76baa8~spotify:album:3SaySnFE2GUU02BsUcfTIx|Forced Witness~https://i.scdn.co/image/ab67616d0000b2732f874bee036b29f2e6f956ac~spotify:album:6y9QkSGMnFRJRbKzh0j91A|Big Sky~https://i.scdn.co/image/ab67616d0000b273d74acc790821961e1fdc805d~spotify:album:7I5ZFjdri5zujiT2NBnE0I|Love Me / Love Me Not~https://i.scdn.co/image/ab67616d0000b273210933bff4e6e68dc23472b0~spotify:album:0fwZXPXf41aF6H0CN3UtXV|Fentanyl~https://i.scdn.co/image/ab67616d0000b273a6007afcd7136fe027f94474~spotify:album:1ob3aRgYHNGrnKgvFwte6X|Elohim (Deluxe Edition)~https://i.scdn.co/image/ab67616d0000b273948403d19e0863ab21ada587~spotify:album:6tbzSO8UHnbvsPFG449fb2|A Constant State of Ohio~https://i.scdn.co/image/ab67616d0000b27323634754a33768a0d270e135~spotify:album:6vEyxIuSDfiR0qIfK7F167|Prolonging the Magic~https://i.scdn.co/image/ab67616d0000b2738c28d7443694de36c67be905~spotify:album:1vbpW28Od2ATmVyAZ0QZ3j|Fashion Nugget~https://i.scdn.co/image/ab67616d0000b27397d410acd00e48ede4027b27~spotify:album:6kPOXxCYCdXBzEbb9dqE90|Comfort Eagle~https://i.scdn.co/image/ab67616d0000b2732729439f771b3ee3057ca3a4~spotify:album:5OCg9OWnL1PY4tW2ON8ssj|Pressure Chief~https://i.scdn.co/image/ab67616d0000b273b241a6cf5f8405343b357c00~spotify:album:6CWKuAxMXAv4s4tfPyMQY8|Hard Candy~https://i.scdn.co/image/ab67616d0000b273f3b9f2d9b3317375a1d24135~spotify:album:50oL8ADjfT0n9gVoMpDwBy|Falling into Place~https://i.scdn.co/image/ab67616d0000b273c74381da47ddf2f1b88930d6~spotify:album:37SWbswE3jEairzfGWBHgH|Versace Summer~https://i.scdn.co/image/ab67616d0000b273a33da94e8ca26916e0b68214~spotify:album:5oVp3gcDTPlw9R1dXScFRn|3~https://i.scdn.co/image/ab67616d0000b27311e50151974d60a789b9626d~spotify:album:6Ae06PksOpCGPcqqwKTF5n|still feel.~https://i.scdn.co/image/ab67616d0000b2730dee3c4d3000d8c7baecab99~spotify:album:4RTurpeSKtgEAvSeEehsiO|The Albatross~https://i.scdn.co/image/ab67616d0000b273cf21bb09d919882bab66d0c3~spotify:album:7AiC8x8GIRbQK2ZROLox5f|Talon Of The Hawk~https://i.scdn.co/image/ab67616d0000b273da378c9e58cf5685d7096284~spotify:album:3Whyz0vsFG5AdcSzlgC3k0|Natural, Everyday Degradation~https://i.scdn.co/image/ab67616d0000b273872726b7a0a23dfeb3f0c73c~spotify:album:579OU5Swiz5rATJ8E3sQjH|Beachboy~https://i.scdn.co/image/ab67616d0000b273e993692743470c7ed913c2f7~spotify:album:5HYTNHcx16osD8MCWucKxu|Blue Wings~https://i.scdn.co/image/ab67616d0000b2739bfe07ea0c750d7d0e34314e~spotify:album:3jPPl73kzB6RaYeoVfgMfd|2~https://i.scdn.co/image/ab67616d0000b27342f45c7dce095b2af8cd3153~spotify:album:0Skv3s5A99n7dstiJOs0aA|6 Feet Beneath The Moon~https://i.scdn.co/image/ab67616d0000b2739650aada596b9a12181db474~spotify:album:6zmDdgPRKrvYwXk8eWv3iK|Double Rainbow~https://i.scdn.co/image/ab67616d0000b273891ce9ac51637e1039ad3e00~spotify:album:4TSttRtuEKwCk8q6QChmzW|Kerosene~https://i.scdn.co/image/ab67616d0000b273bb195e9c0beb59a46576425a~spotify:album:7tAnmYFWLEDFO1MbDTyVsH|Another Light~https://i.scdn.co/image/ab67616d0000b273ae2f8d599adca3159912e481~spotify:album:2R3b2DBSzcT4PptgOcGTRh|Lonerism~https://i.scdn.co/image/6983416ed2934d891676f47c446327b0800a46f0~spotify:album:3C2MFZ2iHotUQOSBzdSvM7|Best Buds~https://i.scdn.co/image/ab67616d0000b2732f2e37250404702f6854797a~spotify:album:3FZ6Wq1KF6HV0BNryudbnD|Death of a Bachelor~https://i.scdn.co/image/ab67616d0000b27323152d9337d6c57b116ed13a~spotify:album:6twKQ0EsUJHVlAr6XBylrj|6 Feet Beneath the Moon~https://i.scdn.co/image/ab67616d0000b273006a67029cdb27f19516ecf3~spotify:album:6DAL46eCFRxgj624atbOYY|Melophobia~https://i.scdn.co/image/ab67616d0000b273c707823ed5683c77b37b121d~spotify:album:4EK8gtQfdVsmDTji7gBFlz|Social Cues~https://i.scdn.co/image/ab67616d0000b27388883701231713b18429f80b~spotify:album:2VuZJsJBPLwg9BeQFQle8G|The Babe Rainbow (AUS)~https://i.scdn.co/image/ab67616d0000b2739ad3303ce684dbf588bfc73a~spotify:album:4SJjaJoFzSLiRY34F5hl2t|Tranquility Base Hotel & Casino~https://i.scdn.co/image/ab67616d0000b27329d0706875760373af2812f1~spotify:album:1jeMiSeSnNS0Oys375qegp|Humbug~https://i.scdn.co/image/ab67616d0000b273758b7328e71d56dfa11fabf9~spotify:album:5ZnOKznPxZTWuMusR4tmGG|2~https://i.scdn.co/image/ab67616d0000b2731e07e60dea6e2c877ea3b2b4~spotify:album:7x6wYKbZUU2BL3N8ZWwM3q|Dedicated To Bobby Jameson~https://i.scdn.co/image/ab67616d0000b273a914d6bc83e4e22d1f02f779~spotify:album:20QC9JeWIAgKxPdTqI0A0U|Lately~https://i.scdn.co/image/ab67616d0000b2738574ee5551d89e57f7ea38bd~spotify:album:41DorGE6V1bXIe6WzCte4c|People Who Can Eat People are the Luckiest People in the World~https://i.scdn.co/image/ab67616d0000b2732a4aeff3ddbbc30af9131e12~spotify:album:2jRdTNGZzb3drtFRYaUpFE|Currents~https://i.scdn.co/image/249248e704f34007898ef0465f3c2b1c521d4347~spotify:album:79dL7FLiJFOO0EoehUHQBv|High Visceral, Pt. 1~https://i.scdn.co/image/ab67616d0000b273e6df9806d6d55b476482383b~spotify:album:2BlcdDBE62JOtVOgC3L3xo|Scavenger~https://i.scdn.co/image/ab67616d0000b2738a22fd5cb486599ac451243a~spotify:album:2RaZ55erDzUKE0zstJ3T0x|Skiptracing~https://i.scdn.co/image/2537580c53f8c96d09f40424ea6d722b6fe36b92~spotify:album:1qMDN9zRQreK81cJ9G1hed|Voyager~https://i.scdn.co/image/ab67616d0000b273d66a29784e4b733c329362e2~spotify:album:2PuXMzeWFG1N7meAXFVMoq|Cardinal~https://i.scdn.co/image/ab67616d0000b2733ab035922253962fd314c410~spotify:album:2SmrUzUMMOYQqoPuOhlhjw";
+
+
+let rawalbums = savedalbums.split("|");
+console.log(rawalbums);
+let albums = [];
+
+rawalbums.forEach(function(album) {
+    albumInfo = album.split("~");
+    let albumObj = {
+        name: albumInfo[0],
+        img: albumInfo[1],
+        uri: albumInfo[2]
+    }
+    albums.push(albumObj)
+});
+
+let dfrag = document.createDocumentFragment();
+
+albums.forEach(function(album) {
+    let albumDiv = document.createElement("a");
+    albumDiv.href = album['uri'];
+    let albumImage = document.createElement("img");
+    albumImage.setAttribute('src', album['img']);
+    albumDiv.appendChild(albumImage);
+    dfrag.appendChild(albumDiv);
+});
+
+let albumContainer = document.getElementById("album-container");
+
+albumContainer.appendChild(dfrag);
