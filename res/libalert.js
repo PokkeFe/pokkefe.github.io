@@ -271,6 +271,8 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
                         outerDiv.appendChild(innerDiv);
                     }
                 });
+
+                document.body.insertBefore(outerDiv, document.getElementById("rightNavContainer"));
             }
         }
 
