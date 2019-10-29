@@ -238,11 +238,13 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
             // }
 
             if (window.location.href.indexOf("stthomas.edu/libraries") > -1) {
+                debug("Detected Library Home Site");
                 let outerDiv = document.createElement("div");
                 outerDiv.setAttribute("id", "libraryAlertMessage");
 
                 data.data.forEach(system => {
                     if (!system.attributes.isNormal) {
+                        debug("Adding " + system.attributes.name);
                         let innerDiv = document.createElement("div");
                         let innerText = document.createElement("p");
 
@@ -272,7 +274,8 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
                     }
                 });
 
-                document.body.insertBefore(outerDiv, document.getElementById("rightNavContainer"));
+                debug("Inserting Alert...");
+                document.getElementById("content").insertBefore(outerDiv, document.getElementById("rightNavContainer"));
             }
         }
 
