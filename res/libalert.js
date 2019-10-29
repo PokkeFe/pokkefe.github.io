@@ -264,9 +264,9 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
                         }
 
                         if (system.posts.length > 0) {
-                            innerText.textContent = system.posts[0].title;
+                            innerText.textContent = system.attributes.name + " - " + system.posts[0].title;
                         } else {
-                            innerText.textContent = "DEFAULT TEXT";
+                            innerText.textContent = system.attributes.name + " - " + "NO ADDITIONAL INFORMATION";
                         }
 
                         innerDiv.appendChild(innerText);
