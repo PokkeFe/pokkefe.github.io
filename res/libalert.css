@@ -1,0 +1,60 @@
+.libalert-container {
+    margin: 0.5rem;
+}
+
+.libalert-container>div {
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+
+.libalert-container span {
+    float: right;
+}
+
+#libraryAlertMessage {
+    width: 100%;
+    display: inline-block;
+    clear: both
+}
+
+#libraryAlertMessage>div {
+    border: 1px solid red;
+    background: red;
+    color: #fff;
+    max-width: 1000px;
+    margin: 10px auto;
+    padding: 5px 20px
+}
+
+div#libraryAlertMessage a {
+    text-decoration: underline;
+    font-weight: 700
+}
+
+#libraryAlertMessage>div.help,
+#libraryAlertMessage>div.informational {
+    color: #004785;
+    background-color: #BDE5F8;
+    border-color: #004785
+}
+
+#libraryAlertMessage>div.normal,
+#libraryAlertMessage>div.success {
+    color: #005C00;
+    background-color: #DFF2BF;
+    border-color: #005C00
+}
+
+#libraryAlertMessage>div.advisory,
+#libraryAlertMessage>div.warning {
+    color: #754500;
+    background-color: #FEEFB3;
+    border-color: #754500
+}
+
+#libraryAlertMessage>div.critical,
+#libraryAlertMessage>div.error {
+    color: #650000;
+    background-color: #FBB;
+    border-color: #650000
+}

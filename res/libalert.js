@@ -61,7 +61,7 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
     var configDefault = {
         silence: { allowToggle: true, default: false },
         allowMultipleExecutions: false, // no reason to ever set this as true
-        apiURL: "http://localhost/status-scrape/systems.php", // set this to the location of the api
+        apiURL: "http://cole.63klabs.net/ust-sys-api/systems.php", // set this to the location of the api
     };
 
     const CONFIG = configParam !== null ? configParam : configDefault;
@@ -237,45 +237,51 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
             //     document.body.insertBefore(alertDiv, document.body.childNodes[0]);
             // }
 
+            let outerDiv = document.createElement("div");
+            outerDiv.setAttribute("id", "libraryAlertMessage");
+
+            data.data.forEach(system => {
+                if (!system.attributes.isNormal) {
+                    debug("Adding " + system.attributes.name);
+                    let innerDiv = document.createElement("div");
+                    let innerText = document.createElement("p");
+
+                    switch (system.attributes.status) {
+                        case "Issue Reported":
+                            innerDiv.classList.add("warning"); //Yellow
+                            break;
+                        case "Closure": // Fall Through
+                        case "Weather Closure": // Fall Through
+                        case "Outage":
+                            innerDiv.classList.add("critical"); //Red
+                            break;
+                        case "Scheduled Maintenance": // Fall Through
+                        case "Notification":
+                            innerDiv.classList.add("help"); //Blue
+                            break;
+                    }
+
+                    if (system.posts.length > 0) {
+                        innerText.textContent = system.attributes.name + " - " + system.posts[0].title;
+                    } else {
+                        innerText.textContent = system.attributes.name + " - " + "NO ADDITIONAL INFORMATION";
+                    }
+
+                    innerDiv.appendChild(innerText);
+                    outerDiv.appendChild(innerDiv);
+                }
+            });
+
+            debug(window.location.href);
+
             if (window.location.href.indexOf("stthomas.edu/libraries") > -1) {
                 debug("Detected Library Home Site");
-                let outerDiv = document.createElement("div");
-                outerDiv.setAttribute("id", "libraryAlertMessage");
-
-                data.data.forEach(system => {
-                    if (!system.attributes.isNormal) {
-                        debug("Adding " + system.attributes.name);
-                        let innerDiv = document.createElement("div");
-                        let innerText = document.createElement("p");
-
-                        switch (system.attributes.status) {
-                            case "Issue Reported":
-                                innerDiv.classList.add("warning"); //Yellow
-                                break;
-                            case "Closure": // Fall Through
-                            case "Weather Closure": // Fall Through
-                            case "Outage":
-                                innerDiv.classList.add("critical"); //Red
-                                break;
-                            case "Scheduled Maintenance": // Fall Through
-                            case "Notification":
-                                innerDiv.classList.add("help"); //Blue
-                                break;
-                        }
-
-                        if (system.posts.length > 0) {
-                            innerText.textContent = system.attributes.name + " - " + system.posts[0].title;
-                        } else {
-                            innerText.textContent = system.attributes.name + " - " + "NO ADDITIONAL INFORMATION";
-                        }
-
-                        innerDiv.appendChild(innerText);
-                        outerDiv.appendChild(innerDiv);
-                    }
-                });
-
                 debug("Inserting Alert...");
                 document.getElementById("content").insertBefore(outerDiv, document.getElementById("rightNavContainer"));
+            } else if (window.location.href.indexOf("libguides.stthomas.edu/beta/home") > -1) {
+                debug("Detected LibGuides Beta Home");
+                debug("Inserting Alert...");
+                document.getElementById("alertContainer").append(outerDiv);
             }
         }
 
