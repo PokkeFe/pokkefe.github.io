@@ -61,7 +61,7 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
     var configDefault = {
         silence: { allowToggle: true, default: false },
         allowMultipleExecutions: false, // no reason to ever set this as true
-        apiURL: "http://cole.63klabs.net/ust-sys-api/systems.php", // set this to the location of the api
+        apiURL: "https://cole.63klabs.net/ust-sys-api/systems.php", // set this to the location of the api
     };
 
     const CONFIG = configParam !== null ? configParam : configDefault;
