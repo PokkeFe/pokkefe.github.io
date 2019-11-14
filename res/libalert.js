@@ -240,7 +240,7 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
             let outerDiv = document.createElement("div");
             outerDiv.setAttribute("id", "libraryAlertMessage");
 
-            data.data.forEach(system => {
+            data.data.forEach(function(system) {
                 if (!system.attributes.isNormal) {
                     debug("Adding " + system.attributes.name);
                     let innerDiv = document.createElement("div");
