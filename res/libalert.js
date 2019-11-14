@@ -281,7 +281,7 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
             } else if (window.location.href.indexOf("libguides.stthomas.edu/beta/home") > -1) {
                 debug("Detected LibGuides Beta Home");
                 debug("Inserting Alert...");
-                document.getElementById("alertContainer").append(outerDiv);
+                document.getElementById("alertContainer").appendChild(outerDiv);
             }
         }
 
