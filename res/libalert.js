@@ -199,43 +199,6 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
 
         var showData = function(data) {
             console.log(data);
-            // display any data returned from an API
-            // if (data.data.length > 0) {
-            //     let alertDiv = document.createElement("div");
-            //     alertDiv.classList.add("libalert-container", "row");
-
-            //     let alertHeader = document.createElement("h4");
-            //     alertHeader.innerText = "Systems Alert - Affected Systems"
-
-            //     alertDiv.appendChild(alertHeader);
-
-            //     data.data.forEach(element => {
-            //         debug(element.attributes.name);
-            //         if (!element.attributes.isNormal) {
-            //             let systemDiv = document.createElement("div");
-            //             systemDiv.classList.add("panel", "panel-default", "col-lg-3", "col-md-4");
-
-            //             let systemName = document.createElement("a");
-            //             systemName.innerText = element.attributes.name;
-            //             systemName.href = element.links.url;
-            //             if (element.posts.length > 0) {
-            //                 systemName.title = element.posts[0].title;
-            //             } else {
-            //                 systemName.title = "DEFAULTED";
-            //             }
-
-            //             let systemStatus = document.createElement("span");
-            //             systemStatus.classList.add("label", "label-warning");
-            //             systemStatus.innerText = element.attributes.status;
-
-            //             systemName.appendChild(systemStatus);
-            //             systemDiv.appendChild(systemName);
-            //             alertDiv.appendChild(systemDiv);
-            //         }
-            //     });
-
-            //     document.body.insertBefore(alertDiv, document.body.childNodes[0]);
-            // }
 
             let outerDiv = document.createElement("div");
             outerDiv.setAttribute("id", "libraryAlertMessage");
@@ -282,6 +245,11 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
                 debug("Detected LibGuides Beta Home");
                 debug("Inserting Alert...");
                 document.getElementById("alertContainer").appendChild(outerDiv);
+            } else if (window.location.href.indexOf("clicsearch.stthomas.edu") > -1) {
+                debug("Detected ClicSearch Page");
+                debug("Inserting Alert...");
+                let parentElement = document.getElementsByClassName("main")[0];
+                parentElement.insertBefore(outerDiv, parentElement.firstChild);
             }
         }
 
