@@ -248,8 +248,8 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
             } else if (window.location.href.indexOf("clicsearch.stthomas.edu") > -1) {
                 debug("Detected ClicSearch Page");
                 debug("Inserting Alert...");
-                let parentElement = document.getElementsByClassName("main")[0];
-                parentElement.insertBefore(outerDiv, parentElement.firstChild);
+                let parentElement = document.getElementsByClassName("topbar-wrapper")[0];
+                parentElement.appendChild(outerDiv);
             }
         }
 
