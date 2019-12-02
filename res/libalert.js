@@ -50,7 +50,7 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
 
     /* Just version and credits that will show in console log */
     var info = {
-        version: "0.0.1-20191015-01", // just a manual version number for debugging: "Is it loading the code I *thought* I uploaded?" Recommend 0.0.0-YYYYMMDD-00 format
+        version: "0.0.1-20191202-01", // just a manual version number for debugging: "Is it loading the code I *thought* I uploaded?" Recommend 0.0.0-YYYYMMDD-00 format
         handle: "ALERT", // the uppercase short handle that shows in console log
         name: "Libalert Widget", // the name of the script
         author: "Cole Potter", // author or organization credited with writing it
