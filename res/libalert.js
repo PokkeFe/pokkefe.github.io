@@ -208,24 +208,23 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
                     debug("Adding " + system.attributes.name);
                     let innerDiv = document.createElement("div");
                     let innerText = document.createElement("p");
+                    let innerBody = document.createElement("div");
 
-                    switch (system.attributes.status) {
-                        case "Issue Reported":
+                    switch (system.attributes.color) {
+                        case "yellow":
                             innerDiv.classList.add("warning"); //Yellow
                             break;
-                        case "Closure": // Fall Through
-                        case "Weather Closure": // Fall Through
-                        case "Outage":
+                        case "red":
                             innerDiv.classList.add("critical"); //Red
                             break;
-                        case "Scheduled Maintenance": // Fall Through
-                        case "Notification":
+                        case "blue":
                             innerDiv.classList.add("help"); //Blue
                             break;
                     }
 
                     if (system.posts.length > 0) {
                         innerText.textContent = system.attributes.name + " - " + system.posts[0].title;
+                        innerBody.innerHTML = system.posts[0].body;
                     } else {
                         innerText.textContent = system.attributes.name + " - " + "NO ADDITIONAL INFORMATION";
                     }
