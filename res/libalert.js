@@ -230,6 +230,7 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
                     }
 
                     innerDiv.appendChild(innerText);
+                    innerDiv.appendChild(innerBody);
                     outerDiv.appendChild(innerDiv);
                 }
             });
