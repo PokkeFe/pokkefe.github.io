@@ -48,7 +48,7 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
 
     /* Just version and credits that will show in console log */
     var info = {
-        version: "0.0.1-20191203-01", // just a manual version number for debugging: "Is it loading the code I *thought* I uploaded?" Recommend 0.0.0-YYYYMMDD-00 format
+        version: "0.0.1-20191203-02", // just a manual version number for debugging: "Is it loading the code I *thought* I uploaded?" Recommend 0.0.0-YYYYMMDD-00 format
         handle: "ALERT", // the uppercase short handle that shows in console log
         name: "LibAlert Widget", // the name of the script
         author: "Cole Potter", // author or organization credited with writing it
@@ -248,7 +248,8 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
             } else if (window.location.href.indexOf("clicsearch.stthomas.edu") > -1) {
                 debug("Detected ClicSearch Page");
                 debug("Modifying Tags...")
-                outerDiv.getElementsByClassName("alert-container").forEach(function(innerDiv) {
+                let containerDivs = outerDiv.getElementsByClassName("alert-container")
+                containerDivs.forEach(function(innerDiv) {
                     innerDiv.classList.add("library-alert-message");
                     switch (system.attributes.color) {
                         case "yellow":
