@@ -250,7 +250,7 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
                 document.getElementById("alertContainer").appendChild(outerDiv);
             } else if (window.location.href.indexOf("clicsearch.stthomas.edu") > -1) {
                 debug("Detected ClicSearch Page");
-                outerDiv.querySelectorAll(".library-alert-message>div:first-child>p").forEach(function(element) {
+                outerDiv.querySelectorAll(".library-alert-message>p:first-child").forEach(function(element) {
                     element.style.textAlign = "center";
                 })
                 debug("Inserting Alert...");
