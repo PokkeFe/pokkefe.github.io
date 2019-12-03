@@ -246,6 +246,7 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
                 document.getElementById("content").insertBefore(outerDiv, document.getElementById("rightNavContainer"));
             } else if (window.location.href.indexOf("libguides.stthomas.edu/beta/home") > -1) {
                 debug("Detected LibGuides Beta Home");
+                outerDiv.style.textAlign = "center";
                 debug("Inserting Alert...");
                 document.getElementById("alertContainer").appendChild(outerDiv);
             } else if (window.location.href.indexOf("clicsearch.stthomas.edu") > -1) {
