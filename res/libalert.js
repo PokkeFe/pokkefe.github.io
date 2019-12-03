@@ -246,11 +246,13 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
                 document.getElementById("content").insertBefore(outerDiv, document.getElementById("rightNavContainer"));
             } else if (window.location.href.indexOf("libguides.stthomas.edu/beta/home") > -1) {
                 debug("Detected LibGuides Beta Home");
-                outerDiv.style.maxWidth = "500px";
                 debug("Inserting Alert...");
                 document.getElementById("alertContainer").appendChild(outerDiv);
             } else if (window.location.href.indexOf("clicsearch.stthomas.edu") > -1) {
                 debug("Detected ClicSearch Page");
+                outerDiv.querySelectorAll(".library-alert-message>div:first-child>p").forEach(function(element) {
+                    element.style.textAlign = "center";
+                })
                 debug("Inserting Alert...");
                 let parentElement = document.getElementsByClassName("topbar-wrapper")[0];
                 parentElement.appendChild(outerDiv);
