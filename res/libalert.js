@@ -1,12 +1,11 @@
-/*! libalert */
+/*! libalert.js */
 /*  ============================================================================================
     ********************************************************************************************
-    libalert
+    libalert.js
     ********************************************************************************************
 
 	Cole Potter
-	Version: 0.0.1-20191015-01
-	[your website]
+	Version: 0.0.2-20191203-01
 
 	Released under Creative Commons Attribution 4.0 International license (CC BY)
 	https://creativecommons.org/licenses/by/4.0/
@@ -31,9 +30,8 @@
     ********************************************************************************************
 */
 
-// thistemplate - change to a name for your script, also change at very end inside the ()
-if (typeof thistemplate === 'undefined') { thistemplate = false; } // let init take care of setting true
-if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } // let init take care of setting true
+if (typeof libalert === 'undefined') { libalert = false; } // let init take care of setting true
+if (typeof libalert_config === 'undefined') { libalert_config = null; } // let init take care of setting true
 
 
 /*  ============================================================================================
@@ -50,9 +48,9 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
 
     /* Just version and credits that will show in console log */
     var info = {
-        version: "0.0.1-20191202-01", // just a manual version number for debugging: "Is it loading the code I *thought* I uploaded?" Recommend 0.0.0-YYYYMMDD-00 format
+        version: "0.0.1-20191203-01", // just a manual version number for debugging: "Is it loading the code I *thought* I uploaded?" Recommend 0.0.0-YYYYMMDD-00 format
         handle: "ALERT", // the uppercase short handle that shows in console log
-        name: "Libalert Widget", // the name of the script
+        name: "LibAlert Widget", // the name of the script
         author: "Cole Potter", // author or organization credited with writing it
         code: "" // github or other link for code - optional, leave "" if no public repository
     };
@@ -223,10 +221,10 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
                     }
 
                     if (system.posts.length > 0) {
-                        innerText.textContent = system.attributes.name + " - " + system.posts[0].title;
+                        innerText.innerHTML = "<b>" + system.attributes.name + " - " + system.posts[0].title + "</b>";
                         innerBody.innerHTML = system.posts[0].body;
                     } else {
-                        innerText.textContent = system.attributes.name + " - " + "NO ADDITIONAL INFORMATION";
+                        innerText.textContent = system.attributes.name + " - " + system.attributes.status;
                     }
 
                     innerDiv.appendChild(innerText);
@@ -271,4 +269,4 @@ if (typeof thistemplate_config === 'undefined') { thistemplate_config = null; } 
 
     init();
 
-})(thistemplate, thistemplate_config);
+})(libalert, libalert_config);
