@@ -250,8 +250,9 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
                 document.getElementById("alertContainer").appendChild(outerDiv);
             } else if (window.location.href.indexOf("clicsearch.stthomas.edu") > -1) {
                 debug("Detected ClicSearch Page");
-                outerDiv.querySelectorAll(".library-alert-message>p:first-child").forEach(function(element) {
-                    element.style.textAlign = "center";
+                outerDiv.querySelectorAll(".library-alert-message").forEach(function(element) {
+                    element.querySelector("p:first-child").style.textAlign = "center";
+                    element.style.marginBottom = "5px";
                 })
                 debug("Inserting Alert...");
                 let parentElement = document.getElementsByClassName("topbar-wrapper")[0];
