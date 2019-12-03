@@ -208,6 +208,8 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
                     let innerText = document.createElement("p");
                     let innerBody = document.createElement("div");
 
+                    innerDiv.classList.add("alert-container");
+
                     switch (system.attributes.color) {
                         case "yellow":
                             innerDiv.classList.add("warning"); //Yellow
@@ -246,18 +248,21 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
             } else if (window.location.href.indexOf("clicsearch.stthomas.edu") > -1) {
                 debug("Detected ClicSearch Page");
                 debug("Modifying Tags...")
-                innerDiv.classList.add("library-alert-message");
-                switch (system.attributes.color) {
-                    case "yellow":
-                        innerDiv.classList.add("yellow-advisory-warning"); //Yellow
-                        break;
-                    case "red":
-                        innerDiv.classList.add("red-critical-error"); //Red
-                        break;
-                    case "blue":
-                        innerDiv.classList.add("blue-help-informational"); //Blue
-                        break;
-                }
+                outerDiv.getElementsByClassName("alert-container").forEach(function(innerDiv) {
+                    innerDiv.classList.add("library-alert-message");
+                    switch (system.attributes.color) {
+                        case "yellow":
+                            innerDiv.classList.add("yellow-advisory-warning"); //Yellow
+                            break;
+                        case "red":
+                            innerDiv.classList.add("red-critical-error"); //Red
+                            break;
+                        case "blue":
+                            innerDiv.classList.add("blue-help-informational"); //Blue
+                            break;
+                    }
+
+                });
                 debug("Inserting Alert...");
                 let parentElement = document.getElementsByClassName("topbar-wrapper")[0];
                 parentElement.appendChild(outerDiv);
