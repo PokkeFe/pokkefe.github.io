@@ -48,7 +48,7 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
 
     /* Just version and credits that will show in console log */
     var info = {
-        version: "0.0.1-20191203-02", // just a manual version number for debugging: "Is it loading the code I *thought* I uploaded?" Recommend 0.0.0-YYYYMMDD-00 format
+        version: "0.0.1-20191203-03", // just a manual version number for debugging: "Is it loading the code I *thought* I uploaded?" Recommend 0.0.0-YYYYMMDD-00 format
         handle: "ALERT", // the uppercase short handle that shows in console log
         name: "LibAlert Widget", // the name of the script
         author: "Cole Potter", // author or organization credited with writing it
@@ -208,17 +208,20 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
                     let innerText = document.createElement("p");
                     let innerBody = document.createElement("div");
 
-                    innerDiv.classList.add("alert-container");
+                    innerDiv.classList.add("library-alert-message");
 
                     switch (system.attributes.color) {
                         case "yellow":
                             innerDiv.classList.add("warning"); //Yellow
+                            innerDiv.classList.add("yellow-advisory-warning"); //Yellow
                             break;
                         case "red":
                             innerDiv.classList.add("critical"); //Red
+                            innerDiv.classList.add("red-critical-error"); //Red
                             break;
                         case "blue":
                             innerDiv.classList.add("help"); //Blue
+                            innerDiv.classList.add("blue-help-informational"); //Blue
                             break;
                     }
 
@@ -247,23 +250,6 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
                 document.getElementById("alertContainer").appendChild(outerDiv);
             } else if (window.location.href.indexOf("clicsearch.stthomas.edu") > -1) {
                 debug("Detected ClicSearch Page");
-                debug("Modifying Tags...")
-                let containerDivs = outerDiv.getElementsByClassName("alert-container")
-                containerDivs.forEach(function(innerDiv) {
-                    innerDiv.classList.add("library-alert-message");
-                    switch (system.attributes.color) {
-                        case "yellow":
-                            innerDiv.classList.add("yellow-advisory-warning"); //Yellow
-                            break;
-                        case "red":
-                            innerDiv.classList.add("red-critical-error"); //Red
-                            break;
-                        case "blue":
-                            innerDiv.classList.add("blue-help-informational"); //Blue
-                            break;
-                    }
-
-                });
                 debug("Inserting Alert...");
                 let parentElement = document.getElementsByClassName("topbar-wrapper")[0];
                 parentElement.appendChild(outerDiv);
