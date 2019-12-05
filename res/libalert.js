@@ -5,7 +5,7 @@
     ********************************************************************************************
 
 	Cole Potter
-	Version: 0.0.2-20191203-01
+	Version: 0.0.2-20191203-04
 
 	Released under Creative Commons Attribution 4.0 International license (CC BY)
 	https://creativecommons.org/licenses/by/4.0/
@@ -48,7 +48,7 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
 
     /* Just version and credits that will show in console log */
     var info = {
-        version: "0.0.1-20191203-03", // just a manual version number for debugging: "Is it loading the code I *thought* I uploaded?" Recommend 0.0.0-YYYYMMDD-00 format
+        version: "0.0.1-20191203-04", // just a manual version number for debugging: "Is it loading the code I *thought* I uploaded?" Recommend 0.0.0-YYYYMMDD-00 format
         handle: "ALERT", // the uppercase short handle that shows in console log
         name: "LibAlert Widget", // the name of the script
         author: "Cole Potter", // author or organization credited with writing it
@@ -205,7 +205,7 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
                 if (!system.attributes.isNormal) {
                     debug("Adding " + system.attributes.name);
                     let innerDiv = document.createElement("div");
-                    let innerText = document.createElement("p");
+                    let innerText = document.createElement("div");
                     let innerBody = document.createElement("div");
 
                     innerDiv.classList.add("library-alert-message");
@@ -251,9 +251,9 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
             } else if (window.location.href.indexOf("clicsearch.stthomas.edu") > -1) {
                 debug("Detected ClicSearch Page");
                 outerDiv.querySelectorAll(".library-alert-message").forEach(function(element) {
-                    element.querySelector("p:first-child").style.textAlign = "center";
+                    //! element.querySelector("p:first-child").style.textAlign = "center";
                     element.style.marginBottom = "5px";
-                })
+                });
                 debug("Inserting Alert...");
                 let parentElement = document.getElementsByClassName("topbar-wrapper")[0];
                 parentElement.appendChild(outerDiv);
