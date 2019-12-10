@@ -196,7 +196,6 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
     var execute = function() {
 
         var showData = function(data) {
-            console.log(data);
 
             let outerDiv = document.createElement("div");
             outerDiv.setAttribute("id", "libraryAlertMessage");
@@ -238,26 +237,7 @@ if (typeof libalert_config === 'undefined') { libalert_config = null; } // let i
                 }
             });
 
-            debug(window.location.href);
-
-            if (window.location.href.indexOf("stthomas.edu/libraries") > -1) {
-                debug("Detected Library Home Site");
-                debug("Inserting Alert...");
-                document.getElementById("content").insertBefore(outerDiv, document.getElementById("rightNavContainer"));
-            } else if (window.location.href.indexOf("libguides.stthomas.edu/beta/home") > -1) {
-                debug("Detected LibGuides Beta Home");
-                debug("Inserting Alert...");
-                document.getElementById("alertContainer").appendChild(outerDiv);
-            } else if (window.location.href.indexOf("clicsearch.stthomas.edu") > -1) {
-                debug("Detected ClicSearch Page");
-                outerDiv.querySelectorAll(".library-alert-message").forEach(function(element) {
-                    //! element.querySelector("p:first-child").style.textAlign = "center";
-                    element.style.marginBottom = "5px";
-                });
-                debug("Inserting Alert...");
-                let parentElement = document.getElementsByClassName("topbar-wrapper")[0];
-                parentElement.appendChild(outerDiv);
-            }
+            document.getElementById("libalert-container").appendChild(outerDiv);
         }
 
         // call API and after data is returned, show it
