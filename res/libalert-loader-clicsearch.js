@@ -218,7 +218,7 @@ if (typeof libalert_loader_config === 'undefined') { libalert_loader_config = nu
         placeContainer(containerDiv);
 
         let loadScript = document.createElement("script");
-        loadScript.setAttribute("src", "//! INPUT URL HERE !//");
+        loadScript.setAttribute("src", "https://pokkefe.github.io/res/libalert.js");
 
         containerDiv.appendChild(loadScript);
 
