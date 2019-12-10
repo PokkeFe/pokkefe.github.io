@@ -75,7 +75,16 @@ if (typeof libalert_loader_config === 'undefined') { libalert_loader_config = nu
     //* Place Container in site-specific location
     //! REMEMBER TO MODIFY THIS PER-SITE
     var placeContainer = function(container) {
-        let parentElement = document.getElementsByClassName("topbar-wrapper")[0];
+        let parentElement;
+
+        let tryInterval = setInterval(function() {
+            parentElement = document.getElementsByClassName("topbar-wrapper")[0];
+
+            if (parentElement != null) {
+                clearInterval(tryInterval);
+            }
+        }, 5000);
+
         parentElement.appendChild(container);
     }
 
