@@ -81,11 +81,11 @@ if (typeof libalert_loader_config === 'undefined') { libalert_loader_config = nu
             parentElement = document.getElementsByClassName("topbar-wrapper")[0];
 
             if (parentElement != null) {
+                parentElement.appendChild(container);
                 clearInterval(tryInterval);
             }
         }, 5000);
 
-        parentElement.appendChild(container);
     }
 
     /* =====================================================================
