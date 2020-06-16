@@ -79,7 +79,7 @@ if (typeof tabsLoader_config === "undefined") {
       subject: "#subject",
       course: "",
       community: "",
-      featured: "",
+      featured: "#article-container",
       info: "",
       popular: "#feed-popular",
     },
@@ -376,7 +376,7 @@ if (typeof tabsLoader_config === "undefined") {
           
           // APPEND TO LIST
           container.appendChild(title);
-          icon.appendChild(toolTip);
+          icon.appendChild(tooltip);
           container.appendChild(icon);
           guideList.appendChild(container);
         }
