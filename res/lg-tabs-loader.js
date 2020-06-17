@@ -497,6 +497,10 @@ if (typeof tabsLoader_config === "undefined") {
           count++;
         }
 
+        if(window.refreshCarouselDots){
+          window.refreshCarouselDots();
+        }
+
       }
 
     }
