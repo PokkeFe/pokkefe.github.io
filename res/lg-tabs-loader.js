@@ -426,16 +426,40 @@ if (typeof tabsLoader_config === "undefined") {
         debug("Parent not defined, skipping populating...");
       } else {
         parent.classList.add("feed-featured");
+        parent.innerHTML = '';
+
+        let dots = document.querySelector("#featured-dots");
+        if(dots){
+          dots.innerHTML = "";
+        }
+
         // STEP THROUGH GUIDES - AND GROUP IN THREES
         let count = 0;
+        let loop = 0;
         let section;
         for(let guide of data.guides){
           // CHECK IF START OF NEW GROUP
           if(count == 0){
+            // ADD NEW SECTION
             if(section){
               parent.appendChild(section);
             }
             section = document.createElement("section");
+
+            // ADD NEW DOT
+            let dot = document.createElement("a");
+            dot.setAttribute("data-index",loop);
+
+            if(loop = 0){
+              section.classList.add("active");
+              dot.classList.add("active");
+            }
+
+            if(dots){
+              dots.appendChild(dot);
+            } else {
+              debug("Could not add dot to carousel navigation. Container not found");
+            }
           }
           
           // CREATE ELEMENTS
@@ -461,12 +485,17 @@ if (typeof tabsLoader_config === "undefined") {
           // INCREASE COUNT OR RESET
           if(count >= 2) {
             count = 0;
+            loop++;
           } else {
             count++;
           }
         }
 
-        //Call function to generate dots?
+        while(count <= 2 && count != 0){
+          let emptyArticle = document.createElement("section");
+          parent.appendChild(emptyArticle);
+          count++;
+        }
 
       }
 
