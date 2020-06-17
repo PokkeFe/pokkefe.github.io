@@ -255,6 +255,7 @@ if (typeof tabsLoader_config === "undefined") {
       spinner.classList.add("loader");
       let container = document.createElement("div");
       container.appendChild(spinner);
+      container.classList.add("loader-container");
       return container;
 
     }
@@ -359,11 +360,13 @@ if (typeof tabsLoader_config === "undefined") {
       if (parent == undefined) {
         debug("Parent not defined, skipping populating...");
       } else {
+        debug("Popular feed retrieved, populating list...");
+
         // SET PARENT CLASS
         parent.classList.add("feed-popular");
 
         // GET SPINNER
-        let spinner = parent.querySelector(".loader");
+        let spinner = parent.querySelector(".loader-container");
 
         // CREATE LIST
         let guideList = document.createElement("ul");
