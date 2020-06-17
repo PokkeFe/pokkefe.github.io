@@ -250,6 +250,13 @@ if (typeof tabsLoader_config === "undefined") {
       }
     }
 
+    let createSpinner = function() {
+      let spinner = document.createElement("div");
+      spinner.classList.add("loader");
+      return spinner;
+
+    }
+
     let populateGuides = function (data) {
       let id = data.id;
       let container = document.getElementById("subj-" + id);
@@ -353,6 +360,9 @@ if (typeof tabsLoader_config === "undefined") {
         // SET PARENT CLASS
         parent.classList.add("feed-popular");
 
+        // GET SPINNER
+        let spinner = parent.querySelector(".loader");
+
         // CREATE LIST
         let guideList = document.createElement("ul");
         guideList.classList.add("feed-list");
@@ -380,6 +390,11 @@ if (typeof tabsLoader_config === "undefined") {
           container.appendChild(icon);
           guideList.appendChild(container);
         }
+        // REMOVE SPINNER
+        if(spinner) {
+          parent.removeChild(spinner);
+        }
+
         // APPEND LIST TO PARENT
         parent.appendChild(guideList);
       }
@@ -388,11 +403,13 @@ if (typeof tabsLoader_config === "undefined") {
     let loadPopularFeed = function () {
       debug("Loading Popular Feed...");
       let url = getFullURL("popular");
-      if(url){
-        console.log(url);
+      let parent = document.querySelector(CONFIG.feedContainer.popular);
+      if(url && parent){
+        let spinner = createSpinner();
+        parent.appendChild(spinner);
         getAPI(url, generatePopularElements);
       } else {
-        debug("Aborting Popular Feed API request - URL undefined.");
+        debug("Aborting Popular Feed API request - URL undefined or Parent non-existent.");
       }
     };
 
