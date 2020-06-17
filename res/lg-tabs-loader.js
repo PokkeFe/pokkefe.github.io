@@ -253,7 +253,9 @@ if (typeof tabsLoader_config === "undefined") {
     let createSpinner = function() {
       let spinner = document.createElement("div");
       spinner.classList.add("loader");
-      return spinner;
+      let container = document.createElement("div");
+      container.appendChild(spinner);
+      return container;
 
     }
 
