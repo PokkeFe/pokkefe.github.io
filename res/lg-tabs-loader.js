@@ -447,19 +447,21 @@ if (typeof tabsLoader_config === "undefined") {
             section = document.createElement("section");
 
             // ADD NEW DOT
-            let dot = document.createElement("a");
-            dot.setAttribute("data-index",loop);
+            // let dot = document.createElement("a");
+            // dot.setAttribute("data-index",loop);
 
             if(loop = 0){
               section.classList.add("active");
-              dot.classList.add("active");
+              // dot.classList.add("active");
             }
 
+            /*
             if(dots){
               dots.appendChild(dot);
             } else {
               debug("Could not add dot to carousel navigation. Container not found");
             }
+            */
           }
           
           // CREATE ELEMENTS
@@ -491,13 +493,17 @@ if (typeof tabsLoader_config === "undefined") {
           }
         }
 
+        parent.appendChild(section);
+
         while(count <= 2 && count != 0){
           let emptyArticle = document.createElement("section");
           parent.appendChild(emptyArticle);
           count++;
         }
 
+        console.log(typeof window.refreshCarouselDots);
         if(window.refreshCarouselDots){
+          console.log("Refreshing Carousel");
           window.refreshCarouselDots();
         }
 
