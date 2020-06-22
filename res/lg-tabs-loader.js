@@ -77,10 +77,10 @@ if (typeof tabsLoader_config === "undefined") {
     feedContainer: {
       // Query for the container to append feed elements to
       subject: "#subject",
-      course: "",
-      community: "",
+      course: "#course",
+      community: "#topics",
       featured: "#article-container",
-      info: "",
+      info: "#help",
       popular: "#feed-popular",
     },
   };
@@ -266,7 +266,6 @@ if (typeof tabsLoader_config === "undefined") {
       let list = document.createElement("ul");
       // Create sub-elements and append to container
       for (let guide of data.data.guides) {
-        console.log(guide);
         let item = document.createElement("li");
         let link = document.createElement("a");
         let icon = document.createElement("i");
@@ -293,6 +292,7 @@ if (typeof tabsLoader_config === "undefined") {
       // Show Librarians
       for (let librarian of data.data.librarians) {
         console.log(librarian);
+        // STILL NEED TO IMPLEMENT / TODO
       }
 
       container.appendChild(list);
@@ -447,22 +447,9 @@ if (typeof tabsLoader_config === "undefined") {
             }
             section = document.createElement("section");
 
-            // ADD NEW DOT
-            // let dot = document.createElement("a");
-            // dot.setAttribute("data-index",loop);
-
             if(!firstSection){
               firstSection = section;
-              // dot.classList.add("active");
             }
-
-            /*
-            if(dots){
-              dots.appendChild(dot);
-            } else {
-              debug("Could not add dot to carousel navigation. Container not found");
-            }
-            */
           }
           
           // CREATE ELEMENTS
@@ -510,21 +497,36 @@ if (typeof tabsLoader_config === "undefined") {
 
       }
 
-    }
+    };
 
     let loadFeaturedFeed = function () {
       debug("Loading Featured Feed...");
       let url = getFullURL("featured");
       if(url){
-        console.log(url);
         getAPI(url, generateFeaturedElements);
       } else {
         debug("Aborting Featured Feed API request - URL undefined.");
       }
     };
 
+    let generateCourseElements = function (data) {
+      let parent = document.querySelector(CONFIG.feedContainer.course);
+      console.log(data);
+    };
+
+    let loadCourseFeed = function () {
+      debug("Loading Course Feed...");
+      let url = getFullURL("course");
+      if(url){
+        getAPI(url, generateCourseElements);
+      } else {
+        debug("Aborting Guide by Course feed API request - URL unidentified.");
+      }
+    };
+
     let attachTabListeners = function () {
       debug("Attaching Tab Listeners...");
+      // TODO
     };
 
     loadSubjectFeed();
