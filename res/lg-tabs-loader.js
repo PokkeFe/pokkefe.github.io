@@ -524,9 +524,45 @@ if (typeof tabsLoader_config === "undefined") {
       }
     };
 
+    let loadCommunityFeed = function() {
+      debug("Loading Community Feed - NOT IMPLEMENTED");
+    };
+
+    let loadHelpFeed = function() {
+      debug("Loading Help Feed - NOT IMPLEMENTED");
+    }
+
     let attachTabListeners = function () {
       debug("Attaching Tab Listeners...");
+      // TEMP
+      loadCourseFeed();
       // TODO
+      let courseBtn = document.querySelector("#course-button");
+      let courseLoaded = false;
+      courseBtn.addEventListener("click", function() {
+          if(!courseLoaded) {
+            loadCourseFeed();
+            courseLoaded = true;
+          }
+      });
+
+      let communityBtn = document.querySelector("#topics-button");
+      let communityLoaded = false;
+      communityBtn.addEventListener("click", function() {
+        if(!communityLoaded){
+          loadCommunityFeed();
+          communityLoaded = true;
+        }
+      });
+
+      let helpBtn = document.querySelector("#help-button");
+      let helpLoaded = false;
+      helpBtn.addEventListener("click", function() {
+        if(!helpLoaded) {
+          loadHelpFeed();
+          helpLoaded = true;
+        }
+      });
     };
 
     loadSubjectFeed();
