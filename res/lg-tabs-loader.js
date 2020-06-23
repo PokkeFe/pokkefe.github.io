@@ -511,7 +511,6 @@ if (typeof tabsLoader_config === "undefined") {
 
     let generateCourseElements = function (data) {
       let parent = document.querySelector(CONFIG.feedContainer.course);
-      console.log(data);
 
       let list = document.createElement("ul");
       for(let guide of data.guides){
@@ -550,12 +549,84 @@ if (typeof tabsLoader_config === "undefined") {
       }
     };
 
-    let loadCommunityFeed = function() {
-      debug("Loading Community Feed - NOT IMPLEMENTED");
+    let generateCommunityElements = function (data) {
+      let parent = document.querySelector(CONFIG.feedContainer.community);
+
+      let list = document.createElement("ul");
+      for(let guide of data.guides){
+        let item = document.createElement("li");
+        let link = document.createElement("a");
+        let icon = document.createElement("i");
+        let desc = document.createElement("span");
+
+        icon.classList.add("feed-icon");
+        desc.classList.add("feed-tooltip");
+        item.classList.add("feed-item");
+        link.classList.add("feed-link");
+
+        link.textContent = guide.name;
+        link.setAttribute("href",guide.src);
+        icon.classList.add("fa", "fa-info-circle");
+        icon.setAttribute("aria-hidden", "true");
+        desc.textContent = guide.description;
+
+        item.appendChild(link);
+        icon.appendChild(desc);
+        item.appendChild(icon);
+        list.appendChild(item);
+      }
+
+      parent.appendChild(list);
     };
 
-    let loadHelpFeed = function() {
-      debug("Loading Help Feed - NOT IMPLEMENTED");
+    let loadCommunityFeed = function() {
+      debug("Loading Community Feed");
+      let url = getFullURL("community");
+      if(url){
+        getAPI(url, generateCommunityElements);
+      } else {
+        debug("Aborting Community feed API request - URL unidentified.");
+      }
+    };
+
+    let generateCommunityElements = function (data) {
+      let parent = document.querySelector(CONFIG.feedContainer.info);
+
+      let list = document.createElement("ul");
+      for(let guide of data.guides){
+        let item = document.createElement("li");
+        let link = document.createElement("a");
+        let icon = document.createElement("i");
+        let desc = document.createElement("span");
+
+        icon.classList.add("feed-icon");
+        desc.classList.add("feed-tooltip");
+        item.classList.add("feed-item");
+        link.classList.add("feed-link");
+
+        link.textContent = guide.name;
+        link.setAttribute("href",guide.src);
+        icon.classList.add("fa", "fa-info-circle");
+        icon.setAttribute("aria-hidden", "true");
+        desc.textContent = guide.description;
+
+        item.appendChild(link);
+        icon.appendChild(desc);
+        item.appendChild(icon);
+        list.appendChild(item);
+      }
+
+      parent.appendChild(list);
+    };
+
+    let loadInfoFeed = function() {
+      debug("Loading Info Feed");
+      let url = getFullURL("info");
+      if(url){
+        getAPI(url, generateInfoElements);
+      } else {
+        debug("Aborting Info feed API request - URL unidentified.");
+      }
     }
 
     let attachTabListeners = function () {
@@ -585,7 +656,7 @@ if (typeof tabsLoader_config === "undefined") {
       let helpLoaded = false;
       helpBtn.addEventListener("click", function() {
         if(!helpLoaded) {
-          loadHelpFeed();
+          loadInfoFeed();
           helpLoaded = true;
         }
       });
