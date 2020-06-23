@@ -589,7 +589,7 @@ if (typeof tabsLoader_config === "undefined") {
       }
     };
 
-    let generateCommunityElements = function (data) {
+    let generateInfoElements = function (data) {
       let parent = document.querySelector(CONFIG.feedContainer.info);
 
       let list = document.createElement("ul");
