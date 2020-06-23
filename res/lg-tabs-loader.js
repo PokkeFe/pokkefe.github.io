@@ -274,8 +274,8 @@ if (typeof tabsLoader_config === "undefined") {
         // Set Classes
         item.classList.add("acc-item");
         link.classList.add("acc-link");
-        icon.classList.add("acc-icon");
-        tooltip.classList.add("acc-tooltip");
+        icon.classList.add("feed-icon");
+        tooltip.classList.add("feed-tooltip");
 
         // Set Properties
         link.innerText = guide.title;
@@ -512,6 +512,32 @@ if (typeof tabsLoader_config === "undefined") {
     let generateCourseElements = function (data) {
       let parent = document.querySelector(CONFIG.feedContainer.course);
       console.log(data);
+
+      let list = document.createElement("ul");
+      for(let guide of data.guides){
+        let item = document.createElement("li");
+        let link = document.createElement("a");
+        let icon = document.createElement("i");
+        let desc = document.createElement("span");
+
+        icon.classList.add("feed-icon");
+        desc.classList.add("feed-tooltip");
+        item.classList.add("feed-item");
+        link.classList.add("feed-link");
+
+        link.textContent = guide.name;
+        link.setAttribute("href",guide.src);
+        icon.classList.add("fa", "fa-info-circle");
+        icon.setAttribute("aria-hidden", "true");
+        desc.textContent = guide.description;
+
+        item.appendChild(link);
+        icon.appendChild(desc);
+        item.appendChild(icon);
+        list.appendChild(item);
+      }
+
+      parent.appendChild(list);
     };
 
     let loadCourseFeed = function () {
