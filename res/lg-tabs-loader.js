@@ -49,10 +49,10 @@ if (typeof tabsLoader_config === "undefined") {
 
   /* Just version and credits that will show in console log */
   var info = {
-    version: "0.0.1-YYYYMMDD", // just a manual version number for debugging: "Is it loading the code I *thought* I uploaded?" Recommend 0.0.0-YYYYMMDD-00 format
-    handle: "", // the uppercase short handle that shows in console log
-    name: "", // the name of the script
-    author: "", // author or organization credited with writing it
+    version: "0.1.0-20200624", // just a manual version number for debugging: "Is it loading the code I *thought* I uploaded?" Recommend 0.0.0-YYYYMMDD-00 format
+    handle: "LG-FEED", // the uppercase short handle that shows in console log
+    name: "LibGuides 2020 Feed Loader", // the name of the script
+    author: "University of St. Thomas Libraries", // author or organization credited with writing it
     code: "", // github or other link for code - optional, leave "" if no public repository
   };
 
@@ -281,7 +281,9 @@ if (typeof tabsLoader_config === "undefined") {
 
         icon.appendChild(tooltip);
         item.appendChild(link);
-        item.appendChild(icon);
+        if(tooltip.textContent != ""){
+          item.appendChild(icon);
+        }
         list.appendChild(item);
       }
       // Show Librarians
@@ -289,12 +291,13 @@ if (typeof tabsLoader_config === "undefined") {
         console.log(librarian);
         // STILL NEED TO IMPLEMENT / TODO
       }
+      debug("WARNING: Librarian display not implemented");
 
       container.appendChild(list);
     };
 
     let generateSubjectElements = function (subjects) {
-      let parent = document.getElementById(CONFIG.subjectContainerId);
+      let parent = document.getElementById(CONFIG.feedContainer.subject);
       if (parent == undefined) {
         debug(
           "Specified parent ID - " +
@@ -389,7 +392,9 @@ if (typeof tabsLoader_config === "undefined") {
           // APPEND TO LIST
           container.appendChild(title);
           icon.appendChild(tooltip);
-          container.appendChild(icon);
+          if(tooltip.textContent != ""){
+            container.appendChild(icon);
+          }
           guideList.appendChild(container);
         }
         // REMOVE SPINNER
@@ -537,6 +542,11 @@ if (typeof tabsLoader_config === "undefined") {
         list.appendChild(item);
       }
 
+      // REMOVE SPINNER
+      if(spinner) {
+        parent.removeChild(spinner);
+      }
+
       parent.appendChild(list);
     };
 
@@ -581,8 +591,15 @@ if (typeof tabsLoader_config === "undefined") {
 
         item.appendChild(link);
         icon.appendChild(desc);
-        item.appendChild(icon);
+        if(desc.textContent != "") {
+          item.appendChild(icon);
+        }
         list.appendChild(item);
+      }
+
+      // REMOVE SPINNER
+      if(spinner) {
+        parent.removeChild(spinner);
       }
 
       parent.appendChild(list);
@@ -628,8 +645,15 @@ if (typeof tabsLoader_config === "undefined") {
 
         item.appendChild(link);
         icon.appendChild(desc);
-        item.appendChild(icon);
+        if(desc.textContent != "") {
+          item.appendChild(icon);
+        }
         list.appendChild(item);
+      }
+
+      // REMOVE SPINNER
+      if(spinner) {
+        parent.removeChild(spinner);
       }
 
       parent.appendChild(list);
