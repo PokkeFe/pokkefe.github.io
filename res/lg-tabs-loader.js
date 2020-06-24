@@ -60,11 +60,6 @@ if (typeof tabsLoader_config === "undefined") {
   var configDefault = {
     silence: { allowToggle: true, default: false },
     allowMultipleExecutions: false, // no reason to ever set this as true
-    apiURL:
-      "https://stthomas-libraries-assets-test.s3.amazonaws.com/json/test-libguides-subjects-home-page.json", // set this to the location of the api
-    subjectContainerId: "subject", // id of the container to append subjects to
-    guideAPI:
-      "https://stthomas-libraries-assets-test.s3.amazonaws.com/json/test-libguides-guides-home-page.json",
     apiHost: "https://libraries.aws.stthomas.edu",
     apiURLs: {
       subject: "/api/libguides/guides-subject/",
@@ -340,7 +335,7 @@ if (typeof tabsLoader_config === "undefined") {
               parent.classList.replace("collapsed", "expanded");
             } else {
               let id = this.getAttribute("data-subject-id");
-              getGuidesAPI(CONFIG.guideAPI /* + id*/, populateGuides, id);
+              getGuidesAPI(getFullURL("subject") + "?subject_id=" + id, populateGuides, id);
               parent.classList.add("expanded");
             }
           });
@@ -350,7 +345,7 @@ if (typeof tabsLoader_config === "undefined") {
 
     let loadSubjectFeed = function () {
       debug("Loading Subject Feed...");
-      getAPI(CONFIG.apiURL, generateSubjectElements);
+      getAPI(getFullURL("subject"), generateSubjectElements);
     };
 
     let generatePopularElements = function (data) {
@@ -385,6 +380,8 @@ if (typeof tabsLoader_config === "undefined") {
           title.classList.add("feed-title");
 
           icon.classList.add("feed-icon");
+          icon.classList.add("fa", "fa-info-circle");
+          icon.setAttribute("aria-hidden", "true");
           
           tooltip.innerText = guide.description;
           tooltip.classList.add("feed-tooltip");
@@ -510,7 +507,11 @@ if (typeof tabsLoader_config === "undefined") {
     };
 
     let generateCourseElements = function (data) {
+      // GET PARENT
       let parent = document.querySelector(CONFIG.feedContainer.course);
+
+      // GET SPINNER
+      let spinner = parent.querySelector(".loader-container");
 
       let list = document.createElement("ul");
       for(let guide of data.guides){
@@ -542,7 +543,10 @@ if (typeof tabsLoader_config === "undefined") {
     let loadCourseFeed = function () {
       debug("Loading Course Feed...");
       let url = getFullURL("course");
-      if(url){
+      let parent = document.querySelector(CONFIG.feedContainer.course);
+      if(url && parent){
+        let spinner = createSpinner();
+        parent.appendChild(spinner);
         getAPI(url, generateCourseElements);
       } else {
         debug("Aborting Guide by Course feed API request - URL unidentified.");
@@ -550,7 +554,12 @@ if (typeof tabsLoader_config === "undefined") {
     };
 
     let generateCommunityElements = function (data) {
+      // GET PARENT
       let parent = document.querySelector(CONFIG.feedContainer.community);
+
+      // GET SPINNER
+      let spinner = parent.querySelector(".loader-container");
+
 
       let list = document.createElement("ul");
       for(let guide of data.guides){
@@ -582,7 +591,10 @@ if (typeof tabsLoader_config === "undefined") {
     let loadCommunityFeed = function() {
       debug("Loading Community Feed");
       let url = getFullURL("community");
-      if(url){
+      let parent = document.querySelector(CONFIG.feedContainer.community);
+      if(url && parent){
+        let spinner = createSpinner();
+        parent.appendChild(spinner);
         getAPI(url, generateCommunityElements);
       } else {
         debug("Aborting Community feed API request - URL unidentified.");
@@ -590,7 +602,11 @@ if (typeof tabsLoader_config === "undefined") {
     };
 
     let generateInfoElements = function (data) {
+      // GET PARENT
       let parent = document.querySelector(CONFIG.feedContainer.info);
+
+      // GET SPINNER
+      let spinner = parent.querySelector(".loader-container");
 
       let list = document.createElement("ul");
       for(let guide of data.guides){
@@ -622,7 +638,10 @@ if (typeof tabsLoader_config === "undefined") {
     let loadInfoFeed = function() {
       debug("Loading Info Feed");
       let url = getFullURL("info");
-      if(url){
+      let parent = document.querySelector(CONFIG.feedContainer.info);
+      if(url && parent){
+        let spinner = createSpinner();
+        parent.appendChild(spinner);
         getAPI(url, generateInfoElements);
       } else {
         debug("Aborting Info feed API request - URL unidentified.");
@@ -631,8 +650,6 @@ if (typeof tabsLoader_config === "undefined") {
 
     let attachTabListeners = function () {
       debug("Attaching Tab Listeners...");
-      // TEMP
-      loadCourseFeed();
       // TODO
       let courseBtn = document.querySelector("#course-button");
       let courseLoaded = false;
