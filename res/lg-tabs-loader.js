@@ -267,14 +267,14 @@ if (typeof tabsLoader_config === "undefined") {
         let tooltip = document.createElement("span");
 
         // Set Classes
-        item.classList.add("acc-item");
-        link.classList.add("acc-link");
+        item.classList.add("feed-item","feed-acc-item");
+        link.classList.add("feed-link");
         icon.classList.add("feed-icon");
         tooltip.classList.add("feed-tooltip");
 
         // Set Properties
         link.innerText = guide.title;
-        link.href = guide.link;
+        link.href = guide.url;
         icon.classList.add("fa", "fa-info-circle");
         icon.setAttribute("aria-hidden", "true");
         tooltip.innerText = guide.description;
@@ -296,7 +296,7 @@ if (typeof tabsLoader_config === "undefined") {
       container.appendChild(list);
     };
 
-    let generateSubjectElements = function (subjects) {
+    let generateSubjectElements = function (data) {
       let parent = document.querySelector(CONFIG.feedContainer.subject);
       if (parent == undefined) {
         debug(
@@ -305,8 +305,7 @@ if (typeof tabsLoader_config === "undefined") {
             " - is undefined. Can't append subjects."
         );
       } else {
-        console.log(subjects);
-        for (let subject of subjects) {
+        for (let subject of data.subjects) {
           // Create Elements
           let container = document.createElement("div");
           let accordionBox = document.createElement("div");
@@ -318,12 +317,16 @@ if (typeof tabsLoader_config === "undefined") {
 
           // Set Properties
           container.setAttribute("id", "subj-" + subject.id);
-          accordionText.innerText = subject.title;
+          accordionText.innerText = subject.name;
           accordionBox.setAttribute("data-subject-id", subject.id);
 
           // Order Elements Internally
           accordionBox.appendChild(accordionText);
           container.append(accordionBox);
+
+
+          // POSSIBLE FEATURE/TODO - Include a link to the subject homepage under subject.url
+
 
           // Add Container to Document
           parent.appendChild(container);
@@ -368,43 +371,49 @@ if (typeof tabsLoader_config === "undefined") {
         let spinner = parent.querySelector(".loader-container");
 
         // CREATE LIST
-        let guideList = document.createElement("ul");
-        guideList.classList.add("feed-list");
+        let list = document.createElement("ul");
+        list.classList.add("feed-list");
 
         // LOOP THROUGH GUIDES
         for (let guide of data.guides) {
 
-          // GENERAGE GUIDE ELEMENT
-          let container = document.createElement("li");
-          let title = document.createElement("a");
+          // DECLARE ELEMENTS
+          let item = document.createElement("li");
+          let link = document.createElement("a");
           let icon = document.createElement("i");
           let tooltip = document.createElement("span");
 
-          title.innerText = guide.name;
-          title.classList.add("feed-title");
-
-          icon.classList.add("feed-icon");
-          icon.classList.add("fa", "fa-info-circle");
-          icon.setAttribute("aria-hidden", "true");
-          
+          // SET PROPERTIES
+          link.textContent = guide.name;
+          link.href = guide.url;
           tooltip.innerText = guide.description;
+          icon.setAttribute("aria-hidden", "true");
+          icon.classList.add("fa", "fa-info-circle");
+
+          // SET CLASSES
+          item.classList.add("feed-item");
+          link.classList.add("feed-link");
+          icon.classList.add("feed-icon");
           tooltip.classList.add("feed-tooltip");
-          
-          // APPEND TO LIST
-          container.appendChild(title);
-          icon.appendChild(tooltip);
-          if(tooltip.textContent != ""){
-            container.appendChild(icon);
+          if(tooltip.textContent == "") {
+            icon.classList.add("feed-icon-empty");
           }
-          guideList.appendChild(container);
+
+          // DECLARE STRUCTURE
+          item.appendChild(link);
+          icon.appendChild(tooltip);
+          item.appendChild(icon);
+          list.appendChild(item);
+
         }
+        
         // REMOVE SPINNER
         if(spinner) {
           parent.removeChild(spinner);
         }
 
         // APPEND LIST TO PARENT
-        parent.appendChild(guideList);
+        parent.appendChild(list);
       }
     };
 
@@ -524,21 +533,27 @@ if (typeof tabsLoader_config === "undefined") {
         let item = document.createElement("li");
         let link = document.createElement("a");
         let icon = document.createElement("i");
-        let desc = document.createElement("span");
+        let tooltip = document.createElement("span");
 
-        icon.classList.add("feed-icon");
-        desc.classList.add("feed-tooltip");
-        item.classList.add("feed-item");
-        link.classList.add("feed-link");
-
+        // SET PROPERTIES
         link.textContent = guide.name;
         link.setAttribute("href",guide.src);
         icon.classList.add("fa", "fa-info-circle");
         icon.setAttribute("aria-hidden", "true");
-        desc.textContent = guide.description;
+        tooltip.textContent = guide.description;
 
+        // SET CLASSES
+        item.classList.add("feed-item");
+        link.classList.add("feed-link");
+        icon.classList.add("feed-icon");
+        tooltip.classList.add("feed-tooltip");
+        if(tooltip.textContent == "") {
+          icon.classList.add("feed-icon-empty");
+        }
+
+        // SET ORDER
         item.appendChild(link);
-        icon.appendChild(desc);
+        icon.appendChild(tooltip);
         item.appendChild(icon);
         list.appendChild(item);
       }
@@ -574,27 +589,32 @@ if (typeof tabsLoader_config === "undefined") {
 
       let list = document.createElement("ul");
       for(let guide of data.guides){
+        // DECLARE ELEMENTS
         let item = document.createElement("li");
         let link = document.createElement("a");
         let icon = document.createElement("i");
-        let desc = document.createElement("span");
+        let tooltip = document.createElement("span");
 
-        icon.classList.add("feed-icon");
-        desc.classList.add("feed-tooltip");
-        item.classList.add("feed-item");
-        link.classList.add("feed-link");
-
+        // SET PROPERTIES
         link.textContent = guide.name;
         link.setAttribute("href",guide.src);
         icon.classList.add("fa", "fa-info-circle");
         icon.setAttribute("aria-hidden", "true");
-        desc.textContent = guide.description;
+        tooltip.textContent = guide.description;
 
-        item.appendChild(link);
-        icon.appendChild(desc);
-        if(desc.textContent != "") {
-          item.appendChild(icon);
+        // SET CLASSES
+        icon.classList.add("feed-icon");
+        tooltip.classList.add("feed-tooltip");
+        item.classList.add("feed-item");
+        link.classList.add("feed-link");
+        if(tooltip.textContent == "") {
+          icon.classList.add("feed-icon-empty");
         }
+
+        // DEFINE STRUCTURE
+        item.appendChild(link);
+        icon.appendChild(tooltip);
+        item.appendChild(icon);
         list.appendChild(item);
       }
 
@@ -603,6 +623,7 @@ if (typeof tabsLoader_config === "undefined") {
         parent.removeChild(spinner);
       }
 
+      // APPEND LIST
       parent.appendChild(list);
     };
 
@@ -628,27 +649,32 @@ if (typeof tabsLoader_config === "undefined") {
 
       let list = document.createElement("ul");
       for(let guide of data.guides){
+        // DECLARE ELEMENTS
         let item = document.createElement("li");
         let link = document.createElement("a");
         let icon = document.createElement("i");
-        let desc = document.createElement("span");
+        let tooltip = document.createElement("span");
 
-        icon.classList.add("feed-icon");
-        desc.classList.add("feed-tooltip");
-        item.classList.add("feed-item");
-        link.classList.add("feed-link");
-
+        // SET PROPERTIES
         link.textContent = guide.name;
         link.setAttribute("href",guide.src);
         icon.classList.add("fa", "fa-info-circle");
         icon.setAttribute("aria-hidden", "true");
-        desc.textContent = guide.description;
+        tooltip.textContent = guide.description;
 
-        item.appendChild(link);
-        icon.appendChild(desc);
-        if(desc.textContent != "") {
-          item.appendChild(icon);
+        // SET CLASSES
+        icon.classList.add("feed-icon");
+        tooltip.classList.add("feed-tooltip");
+        item.classList.add("feed-item");
+        link.classList.add("feed-link");
+        if(tooltip.textContent == "") {
+          icon.classList.add("feed-icon-empty");
         }
+
+        // DECLARE STRUCTURE
+        item.appendChild(link);
+        icon.appendChild(tooltip);
+        item.appendChild(icon);
         list.appendChild(item);
       }
 
@@ -657,6 +683,7 @@ if (typeof tabsLoader_config === "undefined") {
         parent.removeChild(spinner);
       }
 
+      // APPEND LIST
       parent.appendChild(list);
     };
 
