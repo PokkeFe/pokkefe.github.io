@@ -256,8 +256,12 @@ if (typeof tabsLoader_config === "undefined") {
     }
 
     let populateGuides = function (data) {
+      // GET PARENT
       let id = data.id;
-      let container = document.getElementById("subj-" + id);
+      let parent = document.getElementById("subj-" + id);
+      // GET SPINNER
+      let spinner = parent.querySelector(".loader-container");
+      
       let list = document.createElement("ul");
       // Create sub-elements and append to container
       for (let guide of data.data.guides) {
@@ -273,7 +277,7 @@ if (typeof tabsLoader_config === "undefined") {
         tooltip.classList.add("feed-tooltip");
 
         // Set Properties
-        link.innerText = guide.title;
+        link.innerText = guide.name;
         link.href = guide.url;
         icon.classList.add("fa", "fa-info-circle");
         icon.setAttribute("aria-hidden", "true");
@@ -293,7 +297,12 @@ if (typeof tabsLoader_config === "undefined") {
       }
       debug("WARNING: Librarian display not implemented");
 
-      container.appendChild(list);
+      // REMOVE SPINNER
+      if(spinner) {
+        parent.removeChild(spinner);
+      }
+
+      parent.appendChild(list);
     };
 
     let generateSubjectElements = function (data) {
@@ -344,6 +353,8 @@ if (typeof tabsLoader_config === "undefined") {
               let id = this.getAttribute("data-subject-id");
               getGuidesAPI(getFullURL("subject") + "?subject_id=" + id, populateGuides, id);
               parent.classList.add("expanded");
+              let spinner = createSpinner();
+              parent.appendChild(spinner);
             }
           });
         }
@@ -406,7 +417,7 @@ if (typeof tabsLoader_config === "undefined") {
           list.appendChild(item);
 
         }
-        
+
         // REMOVE SPINNER
         if(spinner) {
           parent.removeChild(spinner);
@@ -537,7 +548,7 @@ if (typeof tabsLoader_config === "undefined") {
 
         // SET PROPERTIES
         link.textContent = guide.name;
-        link.setAttribute("href",guide.src);
+        link.setAttribute("href",guide.url);
         icon.classList.add("fa", "fa-info-circle");
         icon.setAttribute("aria-hidden", "true");
         tooltip.textContent = guide.description;
@@ -597,7 +608,7 @@ if (typeof tabsLoader_config === "undefined") {
 
         // SET PROPERTIES
         link.textContent = guide.name;
-        link.setAttribute("href",guide.src);
+        link.setAttribute("href",guide.url);
         icon.classList.add("fa", "fa-info-circle");
         icon.setAttribute("aria-hidden", "true");
         tooltip.textContent = guide.description;
@@ -657,7 +668,7 @@ if (typeof tabsLoader_config === "undefined") {
 
         // SET PROPERTIES
         link.textContent = guide.name;
-        link.setAttribute("href",guide.src);
+        link.setAttribute("href",guide.url);
         icon.classList.add("fa", "fa-info-circle");
         icon.setAttribute("aria-hidden", "true");
         tooltip.textContent = guide.description;
