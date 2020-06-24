@@ -270,12 +270,6 @@ if (typeof tabsLoader_config === "undefined") {
         let icon = document.createElement("i");
         let tooltip = document.createElement("span");
 
-        // Set Classes
-        item.classList.add("feed-item","feed-acc-item");
-        link.classList.add("feed-link");
-        icon.classList.add("feed-icon");
-        tooltip.classList.add("feed-tooltip");
-
         // Set Properties
         link.innerText = guide.name;
         link.href = guide.url;
@@ -283,11 +277,19 @@ if (typeof tabsLoader_config === "undefined") {
         icon.setAttribute("aria-hidden", "true");
         tooltip.innerText = guide.description;
 
+        // Set Classes
+        item.classList.add("feed-item","feed-acc-item");
+        link.classList.add("feed-link");
+        icon.classList.add("feed-icon");
+        tooltip.classList.add("feed-tooltip");
+        if(tooltip.textContent == "") {
+          icon.classList.add("feed-icon-empty");
+        }
+
+        // DECALRE STRUCTURE
         icon.appendChild(tooltip);
         item.appendChild(link);
-        if(tooltip.textContent != ""){
-          item.appendChild(icon);
-        }
+        item.appendChild(icon);
         list.appendChild(item);
       }
       // Show Librarians

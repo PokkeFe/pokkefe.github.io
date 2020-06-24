@@ -34,10 +34,17 @@
 
     position: absolute;
     z-index: 1;
+
+    width: 50em;
+    margin-left: -50em;
 }
 
 .feed-icon-empty {
   opacity: 0.1;
+}
+
+.feed-icon {
+  float: right;
 }
 
 .feed-icon:hover .feed-tooltip {
