@@ -305,7 +305,7 @@ if (typeof tabsLoader_config === "undefined") {
             " - is undefined. Can't append subjects."
         );
       } else {
-        console.log(subject);
+        console.log(subjects);
         for (let subject of subjects) {
           // Create Elements
           let container = document.createElement("div");
