@@ -297,7 +297,7 @@ if (typeof tabsLoader_config === "undefined") {
     };
 
     let generateSubjectElements = function (subjects) {
-      let parent = document.getElementById(CONFIG.feedContainer.subject);
+      let parent = document.querySelector(CONFIG.feedContainer.subject);
       if (parent == undefined) {
         debug(
           "Specified parent ID - " +
