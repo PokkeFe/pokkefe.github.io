@@ -48,6 +48,10 @@
   margin-right: 0.2em;
 }
 
+.feed-icon-empty .feed-tooltip {
+  display: none;
+}
+
 .feed-icon:hover .feed-tooltip {
     visibility: visible;
 }
@@ -116,3 +120,18 @@
     padding: 4rem 0;
 }
 
+li.feed-librarian {
+  padding: 1rem;
+  display: flex;
+}
+
+li.feed-librarian img{
+  height: 4rem;
+  width: 4rem;
+  display: block;
+}
+
+li.feed-librarian a {
+  align-self: center;
+  margin: 1rem;
+}

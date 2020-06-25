@@ -293,11 +293,23 @@ if (typeof tabsLoader_config === "undefined") {
         list.appendChild(item);
       }
       // Show Librarians
+      let libList = document.createElement("ul");
       for (let librarian of data.data.librarians) {
-        console.log(librarian);
-        // STILL NEED TO IMPLEMENT / TODO
+        let item = document.createElement("li");
+        let img = document.createElement("img");
+        let name = document.createElement("a");
+
+        img.src = librarian.image;
+        name.textContent = librarian.name;
+        name.href = librarian.url;
+
+        item.classList.add("feed-librarian");
+
+        item.appendChild(img);
+        item.appendChild(name);
+
+        libList.appendChild(item);
       }
-      debug("WARNING: Librarian display not implemented");
 
       // REMOVE SPINNER
       if(spinner) {
@@ -305,6 +317,8 @@ if (typeof tabsLoader_config === "undefined") {
       }
 
       parent.appendChild(list);
+      parent.appendChild(libList);
+
     };
 
     let generateSubjectElements = function (data) {
