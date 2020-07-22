@@ -1,4 +1,4 @@
-let webSocket = new WebSocket("ws://66.68.94.83:3000", "echo-protocol");
+let webSocket = new WebSocket("wss://66.68.94.83:3000", "echo-protocol");
 
 let users = []
 let user = {
