@@ -1,7 +1,7 @@
 let webSocket = new WebSocket("wss://66.68.94.83:3000", "echo-protocol");
 
-let users = []
-let user = {
+var users = []
+var user = {
     x: 0,
     y: 0,
     r: 250,
@@ -11,6 +11,14 @@ let user = {
 }
 
 function setup() {
+    user = {
+        x: 0,
+        y: 0,
+        r: 250,
+        g: 0,
+        b: 0,
+        n: ''
+    }
 
     createCanvas(800, 800);
 
@@ -43,15 +51,6 @@ function randomName() {
     return fNames[int(random() * fNames.length)] + " " + lNames[int(random() * lNames.length)];
 }
 
-webSocket.onopen = () => {
-    webSocket.send(JSON.stringify(user));
-}
-
-webSocket.onmessage = (evt) => {
-    console.log(evt);
-    users = JSON.parse(evt.data);
-}
-
 function mouseMoved() {
     user.x = mouseX;
     user.y = mouseY;
@@ -62,4 +61,13 @@ function mousePressed() {
     user.x = mouseX;
     user.y = mouseY;
     webSocket.send(JSON.stringify(user));
+}
+
+webSocket.onopen = () => {
+    webSocket.send(JSON.stringify(user));
+}
+
+webSocket.onmessage = (evt) => {
+    console.log(evt);
+    users = JSON.parse(evt.data);
 }
