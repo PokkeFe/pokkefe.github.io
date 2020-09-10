@@ -35,7 +35,9 @@ class Box {
         ellipse(0, 0, 40, 40);
         fill(255);
         ellipse(0, 0, 25, 25);
-        rect(0, 0, 10, 40);
+        rect(0, 0, 10, 41);
+        fill(100);
+        ellipse(0, 0, 10, 10);
         pop();
     }
 }
